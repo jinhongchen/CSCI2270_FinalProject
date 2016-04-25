@@ -124,7 +124,7 @@ int HashTable::hashBernstein(std::string x, int s) {
 }
 
 int HashTable::hashFletcher(std::string x, int s) {
-    int hash;
+    unsigned int hash;
     int len = x.length();
     len /= 2;
     int i=0;
@@ -149,27 +149,17 @@ int HashTable::hashFletcher(std::string x, int s) {
 
 int HashTable::hashAdler(std::string x, int s) {
 	int len = x.length();
-	int hash;
+	unsigned int hash;
 	unsigned int a = 1, b = 0;
 	int i = 0;
 	while (len > 0){
-	cout<<"len outside:" <<len<<endl;
 		int tlen = len > 5550 ? 5550 : len;
 		len -= tlen;
-	//cout<<"len: "<<len<<endl;
-		//exit(1);
 		do {
 			a += x.at(i);
 			b += a;
 			i++;
-			
-	cout<<"len: "<<len<<endl;
-	//cout<<"i: "<<i<<endl;
-	cout<<"tlen: "<<tlen<<endl;
-	//cout<<"do"<<endl;
 		} while (--tlen);
-	cout<<"len post: "<<len<<endl;
-		//exit(1);
 		a %= 65521;
 		b %= 65521;
 		
