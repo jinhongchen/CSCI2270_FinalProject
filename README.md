@@ -37,8 +37,8 @@ Program should run on all versions of Geany.
 
 System Requirements:
 The program reads through all keys in the input file and thus needs enough
-space to store the input file. The included uuid.txt file is around 200 Mb
-in size, so the system testing this program will need at least 200 Mb of 
+space to store the input file. The included uuid.txt file is around 35 Mb
+in size, so the system testing this program will need at least that much  
 available memory to store the file. The program was tested exclusively in 
 Ubuntu, but should perform as expected in both Windows and MacOS.
 
