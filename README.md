@@ -9,7 +9,7 @@ efficacy can be compared using these parameters. The class will contain
 the methods to compare the functions, and algorithms can be put into
 different methods and compared in the overall wrapper. 
 
-Research shows that increasing hash table size may reduce then number of 
+Research shows that increasing hash table size may reduce the number of 
 collisions. This program will examine this behavior by incrementally 
 increasing table size by 10% from 100 to 130 and observing if collisions
 increase or decrease while using the same number of keys.
