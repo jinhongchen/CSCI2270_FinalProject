@@ -20,9 +20,12 @@ N/A
 How to Run:
 Note - this project was tested on Geany 1.23.1
 Using Geany - start by loading the following files to a common directory 
-and changing your command line location to that directory. Compile the
-project using command: 
+and changing your command line location to that directory. There is a terminal
+tab in the bottom left of Geany that can be used to compile and run the program.
+
+Compile the project using command: 
 g++ -std=c++11 Project.cpp HashTable.cpp
+
 The program can be run using:
 ./a.out uuid.txt
 
@@ -32,8 +35,7 @@ file, but may be substituted with any unique the user wishes to test -
 social security numbers, for example.
 
 Dependencies:
-Program must be compiled using c++11.
-Program should run on all versions of Geany.
+Program must be compiled using c++11, should run on all versions of Geany.
 
 System Requirements:
 The program reads through all keys in the input file and thus needs enough
