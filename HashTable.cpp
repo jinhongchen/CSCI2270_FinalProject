@@ -82,7 +82,7 @@ void HashTable::testCollision(int numKeys, int tableSize, int (HashTable::*hash)
     for (int i=0; i<MAXTABSZ*4; i++) {
         hashTable[i]=0;
     }
-    cout<<"Number of keys: " << numKeys << " tableSize: " << tableSize;
+    cout<<"Number of keys: " << numKeys << ", table size: " << tableSize;
     int colsn=0;
     int idx;
     for (int i=0; i<numKeys; i++) {
@@ -103,7 +103,7 @@ void HashTable::testCollision(int numKeys, int tableSize, int (HashTable::*hash)
     }
     //wasted space
     double w = (double)100*wasted/tableSize;
-    cout << " total collisions: " << colsn << " wasted space: " << w <<"%" << endl;
+    cout << ", total collisions: " << colsn << ", total wasted space: " << w <<"%" << endl;
 }
 
 int HashTable::hashSum(std::string x, int s) {
