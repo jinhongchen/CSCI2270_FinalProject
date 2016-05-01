@@ -22,6 +22,32 @@ bool isNumber(const string& s)
     return !s.empty() && it == s.end();
 }
 
+bool checkInput(string input) {
+	if (input.length() > 7 || input.length() == 0){
+		cout<<"Incorrect range"<<endl;
+		return false;
+	}
+	//cout<<"input at 0: "<<input.at(0)<<endl;
+	if (input.at(0) == '-' || input.at(0) == '+'){
+		cout<<"Enter only an integer without +/- signs"<<endl;
+		return false;
+	}
+	int tablesz;
+	if ( isNumber(input) ) {
+	    tablesz = stoi(input);
+            if ( tablesz <=0 || tablesz > MAXTABSZ ) {
+                cout << "Table size is too large, max allowed is " << MAXTABSZ << " (one million) " << endl; 
+                return false;
+                
+            } else {
+				return true;
+			}
+        } else {
+            cout << input << " is not a number" << endl; 
+            return false;
+        }
+}
+
 int main (int argc, char *argv[]) {
 	
         if ( argc != 2 ) {
@@ -47,16 +73,11 @@ int main (int argc, char *argv[]) {
 	cout << "Enter hash table size (<=" << MAXTABSZ << ")" << endl;
 	getline(cin, input);
 
-        if ( isNumber(input) ) {
-	    tabsize = stoi(input);
-            if ( tabsize <=0 || tabsize > MAXTABSZ ) {
-                cout << "Table size is too large, max allowed is " << MAXTABSZ << " (one million) " << endl; 
-                exit(1);
-            }
-        } else {
-            cout << input << " is not a number" << endl; 
-            exit(1);
-        }
+    if (checkInput(input)!= true){
+		exit(1);
+	} else {
+		tabsize = stoi(input);
+	}
 
 	while (flag) {
 		cout<<"======Main Menu======"<<endl;
@@ -123,7 +144,11 @@ int main (int argc, char *argv[]) {
 			case '7':
 				cout << "Enter hash table size (<=" << MAXTABSZ << ")" << endl;
 				getline(cin, input);
-				tabsize = stoi(input);
+				if (checkInput(input)!= true){
+					break;
+				} else {
+					tabsize = stoi(input);
+				}
 				break; 
 			case '8':
 				cout<<"Goodbye!"<<endl;
