@@ -2,7 +2,7 @@
 Final Project
 Richard Li
 4/22/16
-Hash algorithm 
+Hash algorithm
 */
 
 #include <iostream>
@@ -36,20 +36,20 @@ bool checkInput(string input) {
 	if ( isNumber(input) ) {
 	    tablesz = stoi(input);
             if ( tablesz <=0 || tablesz > MAXTABSZ ) {
-                cout << "Table size is too large, max allowed is " << MAXTABSZ << " (one million) " << endl; 
+                cout << "Table size is too large, max allowed is " << MAXTABSZ << " (one million) " << endl;
                 return false;
-                
+
             } else {
 				return true;
 			}
         } else {
-            cout << input << " is not a number" << endl; 
+            cout << input << " is not a number" << endl;
             return false;
         }
 }
 
 int main (int argc, char *argv[]) {
-	
+
         if ( argc != 2 ) {
                 cout<<"Usage: " << argv[0] <<" uuid.txt" <<endl;
                 exit(1);
@@ -63,7 +63,7 @@ int main (int argc, char *argv[]) {
         }
 
 	bool flag = true;
-	string ans; 
+	int ans;
 	string input;
 	HashTable h;
 
@@ -90,18 +90,18 @@ int main (int argc, char *argv[]) {
 		cout << "7. Change hash table size" << endl;
 		cout << "8. Quit" << endl;
 
-		getline (cin, ans);
-		switch (ans[0]){
+		cin >> ans;
+		switch (ans){
 			//testing 2270's hash performance
-			case '1':
+			case 1:
 				h.testHashSumPerf(tabsize);
 				h.testHashSumCollision(tabsize, tabsize);
 				h.testHashSumCollision(tabsize, tabsize*1.1);
 				h.testHashSumCollision(tabsize, tabsize*1.2);
 				h.testHashSumCollision(tabsize, tabsize*1.3);
 				break;
-			//bernstein's hash	
-			case '2':
+			//bernstein's hash
+			case 2:
 				h.testHashBernsteinPerf(tabsize);
 				h.testHashBernsteinCollision(tabsize, tabsize);
 				h.testHashBernsteinCollision(tabsize, tabsize*1.1);
@@ -109,7 +109,7 @@ int main (int argc, char *argv[]) {
 				h.testHashBernsteinCollision(tabsize, tabsize*1.3);
 				break;
 			//fletcher's hash
-			case '3':
+			case 3:
 				h.testHashFletcherPerf(tabsize);
 				h.testHashFletcherCollision(tabsize, tabsize);
 				h.testHashFletcherCollision(tabsize, tabsize*1.1);
@@ -117,31 +117,31 @@ int main (int argc, char *argv[]) {
 				h.testHashFletcherCollision(tabsize, tabsize*1.3);
 				break;
 			//adler's hash
-			case '4':
+			case 4:
 				h.testHashAdlerPerf(tabsize);
 				h.testHashAdlerCollision(tabsize, tabsize);
 				h.testHashAdlerCollision(tabsize, tabsize*1.1);
 				h.testHashAdlerCollision(tabsize, tabsize*1.2);
 				h.testHashAdlerCollision(tabsize, tabsize*1.3);
-				break; 
+				break;
 			//b jenkin's hash
-			case '5':
+			case 5:
 				h.testHashBobJenkinsPerf(tabsize);
 				h.testHashBobJenkinsCollision(tabsize, tabsize);
 				h.testHashBobJenkinsCollision(tabsize, tabsize*1.1);
 				h.testHashBobJenkinsCollision(tabsize, tabsize*1.2);
 				h.testHashBobJenkinsCollision(tabsize, tabsize*1.3);
-				break; 
+				break;
 			//p hsieh's hash
-			case '6':
+			case 6:
 				h.testHashPaulHsiehPerf(tabsize);
 				h.testHashPaulHsiehCollision(tabsize, tabsize);
 				h.testHashPaulHsiehCollision(tabsize, tabsize*1.1);
 				h.testHashPaulHsiehCollision(tabsize, tabsize*1.2);
 				h.testHashPaulHsiehCollision(tabsize, tabsize*1.3);
-				break; 
+				break;
 			//new table size
-			case '7':
+			case 7:
 				cout << "Enter hash table size (<=" << MAXTABSZ << ")" << endl;
 				getline(cin, input);
 				if (checkInput(input)!= true){
@@ -149,13 +149,15 @@ int main (int argc, char *argv[]) {
 				} else {
 					tabsize = stoi(input);
 				}
-				break; 
-			case '8':
+				break;
+			case 8:
 				cout<<"Goodbye!"<<endl;
 				flag = false;
 				break;
-			default: 
+			default:
 				cout<<"Incorrect input"<<endl;
+				cin.clear();
+ +			    cin.ignore(1000,'\n');
 		}
 	}
 	return 0;
